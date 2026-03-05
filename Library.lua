@@ -2992,13 +2992,25 @@ function Library:CreateWindow(...)
     });
 
     local WindowLabel = Library:CreateLabel({
-        Position = UDim2.new(0, 7, 0, 0);
-        Size = UDim2.new(0, 0, 0, 25);
+        Position = UDim2.new(0, 0, 0, 0);
+        Size = UDim2.new(1, 0, 0, 25);
         Text = Config.Title or '';
-        TextXAlignment = Enum.TextXAlignment.Left;
+        TextXAlignment = Enum.TextXAlignment.Center;
         ZIndex = 1;
         Parent = Inner;
     });
+
+    if (Config.Game) then
+        local WindowGameLabel = Library:CreateLabel({
+            Position = UDim2.new(1, -7, 0, 0);
+            Size = UDim2.new(0, 0, 0, 25);
+            Text = Config.Game;
+            TextXAlignment = Enum.TextXAlignment.Right;
+            TextColor3 = Color3.new(1,0,0),
+            ZIndex = 1;
+            Parent = Inner;
+        });
+    end
 
     local MainSectionOuter = Library:Create('Frame', {
         BackgroundColor3 = Library.BackgroundColor;
