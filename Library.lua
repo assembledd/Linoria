@@ -1,10 +1,14 @@
-local InputService = game:GetService('UserInputService');
-local TextService = game:GetService('TextService');
-local CoreGui = game:GetService('CoreGui');
-local Teams = game:GetService('Teams');
-local Players = game:GetService('Players');
-local RunService = game:GetService('RunService')
-local TweenService = game:GetService('TweenService');
+local function RefService(Service)
+    return cloneref(game:GetService(Service))
+end
+
+local InputService = RefService('UserInputService');
+local TextService = RefService('TextService');
+local CoreGui = RefService('CoreGui');
+local Teams = RefService('Teams');
+local Players = RefService('Players');
+local RunService = RefService('RunService')
+local TweenService = RefService('TweenService');
 local RenderStepped = RunService.RenderStepped;
 local LocalPlayer = Players.LocalPlayer;
 local Mouse = LocalPlayer:GetMouse();
