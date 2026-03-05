@@ -247,4 +247,6 @@ local ThemeManager = {} do
 	ThemeManager:BuildFolderTree()
 end
 
+getgenv().ThemeManager = ThemeManager
+
 return ThemeManager
