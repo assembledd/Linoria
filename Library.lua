@@ -3081,12 +3081,26 @@ function Library:CreateWindow(...)
         };
 
         local TabButtonWidth = Library:GetTextBounds(Name, Library.Font, 16);
+        local Tabs = 1
 
+        for i,v in TabArea:GetChildren() do
+            if (v.Name == '\r') then
+                Tabs += 1
+            end
+        end
+
+        for i,v in TabArea:GetChildren() do
+            if (v.Name == '\r') then
+                v.Size = UDim2.new(1 / Tabs, 0, 1, 0);
+            end
+        end
+    
         local TabButton = Library:Create('Frame', {
             BackgroundColor3 = Library.BackgroundColor;
             BorderColor3 = Library.OutlineColor;
-            Size = UDim2.new(0, TabButtonWidth + 8 + 4, 1, 0);
+            Size = UDim2.new(1 / Tabs, 0, 1, 0);
             ZIndex = 1;
+            Name = '\r';
             Parent = TabArea;
         });
 
