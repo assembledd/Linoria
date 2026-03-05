@@ -147,7 +147,7 @@ function Library:ApplyTextStroke(Inst)
     });
 end;
 
-function Library:CreateLabel(Properties, IsHud)
+function Library:CreateLabel(Properties, IsHud, DontRegister)
     local _Instance = Library:Create('TextLabel', {
         BackgroundTransparency = 1;
         Font = Library.Font;
@@ -158,9 +158,11 @@ function Library:CreateLabel(Properties, IsHud)
 
     Library:ApplyTextStroke(_Instance);
 
-    Library:AddToRegistry(_Instance, {
-        TextColor3 = 'FontColor';
-    }, IsHud);
+    if not (DontRegister) then
+        Library:AddToRegistry(_Instance, {
+            TextColor3 = 'FontColor';
+        }, IsHud);
+    end
 
     return Library:Create(_Instance, Properties);
 end;
@@ -3009,7 +3011,7 @@ function Library:CreateWindow(...)
             TextColor3 = Color3.new(1,0,0),
             ZIndex = 1;
             Parent = Inner;
-        });
+        }, nil, true);
     end
 
     local MainSectionOuter = Library:Create('Frame', {
