@@ -271,4 +271,6 @@ local SaveManager = {} do
 	SaveManager:BuildFolderTree()
 end
 
+getgenv().SaveManager = SaveManager
+
 return SaveManager
