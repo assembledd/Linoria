@@ -1042,12 +1042,6 @@ do
             Parent = ToggleLabel;
         });
 
-        ScreenGui.Background:GetPropertyChangedSignal("Visible"):Connect(function()
-            if ScreenGui.Background.Visible then return end
-
-            PickOuter.Visible = false
-        end)
-
         local PickInner = Library:Create('Frame', {
             BackgroundColor3 = Library.BackgroundColor;
             BorderColor3 = Library.OutlineColor;
@@ -1083,6 +1077,12 @@ do
         ToggleLabel:GetPropertyChangedSignal('AbsolutePosition'):Connect(function()
             ModeSelectOuter.Position = UDim2.fromOffset(ToggleLabel.AbsolutePosition.X + ToggleLabel.AbsoluteSize.X + 4, ToggleLabel.AbsolutePosition.Y + 1);
         end);
+
+        ScreenGui.Background:GetPropertyChangedSignal("Visible"):Connect(function()
+            if ScreenGui.Background.Visible then return end
+
+            ModeSelectOuter.Visible = false
+        end)
 
         local ModeSelectInner = Library:Create('Frame', {
             BackgroundColor3 = Library.BackgroundColor;
