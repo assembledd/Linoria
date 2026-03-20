@@ -2290,6 +2290,12 @@ do
             Parent = ScreenGui;
         });
 
+        ScreenGui.Background:GetPropertyChangedSignal("Visible"):Connect(function()
+            if ScreenGui.Background.Visible then return end
+
+            ListOuter.Visible = false
+        end)
+        
         local function RecalculateListPosition()
             ListOuter.Position = UDim2.fromOffset(DropdownOuter.AbsolutePosition.X, DropdownOuter.AbsolutePosition.Y + DropdownOuter.Size.Y.Offset + 1);
         end;
