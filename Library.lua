@@ -474,6 +474,12 @@ do
             Parent = ScreenGui,
         });
 
+        ScreenGui.Background:GetPropertyChangedSignal("Visible"):Connect(function()
+            if ScreenGui.Background.Visible then return end
+
+            PickerFrameOuter.Visible = false
+        end)
+
         DisplayFrame:GetPropertyChangedSignal('AbsolutePosition'):Connect(function()
             PickerFrameOuter.Position = UDim2.fromOffset(DisplayFrame.AbsolutePosition.X, DisplayFrame.AbsolutePosition.Y + 18);
         end)
