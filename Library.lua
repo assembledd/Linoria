@@ -1881,7 +1881,7 @@ do
 
         local ToggleRegion = Library:Create('Frame', {
             BackgroundTransparency = 1;
-            Size = UDim2.new(0, 170, 1, 0);
+            Size = UDim2.new(0, 120, 1, 0);
             ZIndex = 8;
             Parent = ToggleOuter;
         });
