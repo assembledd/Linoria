@@ -797,6 +797,11 @@ do
                 Library:Notify('Copied RGB values to clipboard!', 2)
             end)
 
+            ScreenGui.Background:GetPropertyChangedSignal("Visible"):Connect(function()
+                if ScreenGui.Background.Visible then return end
+
+                ContextMenu:Hide()
+            end)
         end
 
         Library:AddToRegistry(PickerFrameInner, { BackgroundColor3 = 'BackgroundColor'; BorderColor3 = 'OutlineColor'; });
@@ -2966,6 +2971,7 @@ function Library:CreateWindow(...)
     };
 
     local Outer = Library:Create('Frame', {
+        Name = "Background",
         AnchorPoint = Config.AnchorPoint,
         BackgroundColor3 = Color3.new(0, 0, 0);
         BorderSizePixel = 0;
